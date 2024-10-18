@@ -3,6 +3,10 @@ require("dotenv").config()
 const connection=require("./config/db")
 const userRouter=require("./routes/user.routes")
 const AuthenticationUser=require("./middleware/Auth")
+const cors = require("cors");
+
+
+
 // inilize the post
 const PORT=process.env.PORT||3000
 
@@ -11,6 +15,13 @@ const PORT=process.env.PORT||3000
 
 // server initilize
 const server=express()
+
+
+const corsOptions = {
+    origin: '*', // Specify the frontend URL
+    credentials: true, // Allow credentials if needed
+  };
+  server.use(cors(corsOptions));
 
 
 // routes
